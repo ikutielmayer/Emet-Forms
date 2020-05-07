@@ -5,11 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Emet_Forms"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="lblBienvenido" Content="ברוך אבא" HorizontalAlignment="Center" Margin="176,20,136,0" VerticalAlignment="Top" Width="480" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="txSerial" HorizontalAlignment="Left" Height="23" Margin="63,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Serial #" HorizontalAlignment="Left" Height="28" Margin="63,81,0,0" VerticalAlignment="Top" Width="120" FontWeight="Bold"/>
+        Title="EMET OEM Solution - Forms" FontWeight="Bold" Height="453.689" Width="793.852">
+    <Grid Margin="10,10,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="739*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblBienvenido" Content="ברוך אבא" HorizontalAlignment="Center" Margin="126.82,20,132,0" VerticalAlignment="Top" Width="480" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1"/>
+        <TextBox x:Name="txSerial" HorizontalAlignment="Left" Height="23" Margin="17.82,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="txMakat" HorizontalAlignment="Left" Height="23" Margin="160.82,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Grid.Column="1"/>
+        <Label Content="Serial #" HorizontalAlignment="Left" Height="28" Margin="17.82,81,0,0" VerticalAlignment="Top" Width="120" FontWeight="Bold" Grid.Column="1"/>
+        <Button x:Name="btnEnviar" Content="Send" HorizontalAlignment="Left" Margin="520.82,109,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Background="#FF3BC31C" Foreground="White" Grid.Column="1" Click="btnEnviar_Click"/>
+        <Label Content="Makat" HorizontalAlignment="Left" Height="28" Margin="160.82,81,0,0" VerticalAlignment="Top" Width="156" FontWeight="Bold" Grid.Column="1"/>
+        <TextBox x:Name="txPaka" HorizontalAlignment="Left" Height="23" Margin="342.82,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Grid.Column="1"/>
+        <Label Content="Paka" HorizontalAlignment="Left" Height="28" Margin="342.82,81,0,0" VerticalAlignment="Top" Width="156" FontWeight="Bold" Grid.Column="1"/>
 
     </Grid>
 </Window>
