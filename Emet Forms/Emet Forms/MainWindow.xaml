@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Emet_Forms"
         mc:Ignorable="d"
-        Title="EMET OEM Solution - Forms" FontWeight="Bold" Height="453.689" Width="793.852">
+        Title="EMET OEM Solution - Forms" FontWeight="Bold" Height="453.689" Width="793.852" Loaded="Window_Loaded">
+   
     <Grid Margin="10,10,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45*"/>
@@ -19,6 +20,22 @@
         <Label Content="Makat" HorizontalAlignment="Left" Height="28" Margin="160.82,81,0,0" VerticalAlignment="Top" Width="156" FontWeight="Bold" Grid.Column="1"/>
         <TextBox x:Name="txPaka" HorizontalAlignment="Left" Height="23" Margin="342.82,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Grid.Column="1"/>
         <Label Content="Paka" HorizontalAlignment="Left" Height="28" Margin="342.82,81,0,0" VerticalAlignment="Top" Width="156" FontWeight="Bold" Grid.Column="1"/>
+        <Grid Margin="10">
+            <DataGrid x:Name="dtGrid" AutoGenerateColumns="False" Margin="49,156,-504,0" ItemsSource="{Binding}">
+                <DataGrid.Columns>
 
+                    <DataGridTextColumn Header="Serial #" Binding="{Binding serial}" />
+
+                    <DataGridTemplateColumn Header="fecha">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding fecha}" BorderThickness="0" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

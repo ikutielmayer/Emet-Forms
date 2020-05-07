@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MySql.Data;
 using MySql.Data.MySqlClient;
 
 namespace Emet_Forms
@@ -26,24 +13,58 @@ namespace Emet_Forms
         {
             InitializeComponent();
 
-          //  string connectionstring = "SERVER=localhost;DATABASE=emet;UID=ikutiel;PASSWORD=B7654321b;";
-            string con = "server = localhost; user id = ikutiel; password = B7654321b; persistsecurityinfo = True; database = emet";
-            MySqlConnection connection = new MySqlConnection(con);
+            //  string connectionstring = "SERVER=localhost;DATABASE=emet;UID=ikutiel;PASSWORD=B7654321b;";
 
-            MySqlCommand cmd = new MySqlCommand("select * from reportes", connection);
 
-            connection.Open();
-            DataTable dt = new DataTable();
-            dt.Load(cmd.ExecuteReader());
-            connection.Close();
-            
-            dtGrid.DataContext = dt;
+            obtenerLista();
+
+
+
 
         }
 
+        private void obtenerLista() {
+            MySqlConnection con = MyCon.ObtenerConexion();
+
+            MySqlCommand cmd = new MySqlCommand("select * from reportes", con);
+
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            con.Close();
+
+            dtGrid.DataContext = dt;
+        }
+
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
+        {            
+            Reportar pReporte = new Reportar();
+            pReporte.serial = txSerial.Text.Trim();
+            pReporte.makat = txMakat.Text.Trim();
+            pReporte.Paka = txPaka.Text.Trim();
+
+            //  pReporte.Fecha_Nac = dtpFechaNacimiento.Value.Year + “/” +dtpFechaNacimiento.Value.Month + “/” +dtpFechaNacimiento.Value.Day;
+
+            int resultado = ReportesABM.Agregar(pReporte);
+
+            if (resultado > 0)
+            {
+                MessageBox.Show("Se ha enviado con Exito!!", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                obtenerLista();
+            }
+
+            else
+
+            {
+                MessageBox.Show("No se pudo guardar el Reporte", "Fallo!!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+            }
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           
+          
         }
     }
 }
